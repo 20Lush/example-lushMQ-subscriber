@@ -27,4 +27,10 @@ int main(int argc, char** argv) {
 
 	std::cout << "ZMQ VERS: " << ZMQ_VERSION_MAJOR << "." << ZMQ_VERSION_MINOR << "." << ZMQ_VERSION_PATCH << std::endl;
 
+	zmq::context_t myContext;
+	zmq::socket_t mySocket(myContext, zmq::socket_type::push);
+	mySocket.bind("inproc://test");
+	const std::string_view myMessage = "Hello world!";
+	mySocket.send(zmq::buffer(myMessage), zmq::send_flags::dontwait);
+
 }
