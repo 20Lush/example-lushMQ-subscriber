@@ -40,6 +40,9 @@ target_compile_features(${PROJECT_NAME}
         cxx_std_20
 )
 
+set(ZeroMQ_DIR ${DEPS_PATH}/zmq/lib/cmake/ZeroMQ)
+find_package(ZeroMQ REQUIRED)
+
 # Set some target properties of the installed binaries, liked if they have position independent code
 set_target_properties(${PROJECT_NAME}
     PROPERTIES
@@ -50,7 +53,7 @@ set_target_properties(${PROJECT_NAME}
 # Link the libraries we want, like OpenCV or the cuda toolkit
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
-        # any dependency library we are linking...
+        libzmq-static
 )
 
 # Send to boilerplate!

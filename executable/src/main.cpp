@@ -1,6 +1,8 @@
 
 #include "main.hpp"
 
+#include "zmq.hpp"
+
 // Make sure to change the namespace EXECUTABLE to something more specific
 namespace lush::EXECUTABLE {
 
@@ -22,4 +24,7 @@ int main(int argc, char** argv) {
 	std::cout << "Hello World! Executable given " << argc << " arguments." << std::endl;
 
 	lush::EXECUTABLE::print_args(argc, argv);
+
+	std::cout << "ZMQ VERS: " << ZMQ_VERSION_MAJOR << "." << ZMQ_VERSION_MINOR << "." << ZMQ_VERSION_PATCH << std::endl;
+
 }
